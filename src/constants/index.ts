@@ -108,7 +108,7 @@ export const ROUTES = {
 };
 
 export const LEGAL_DISCLAIMER =
-  'VONK Tournaments is an independently operated tournament-management platform and is not affiliated with, endorsed by, or sponsored by KRAFTON or BGMI. The current frontend demonstration does not process real payments. Wallet balances, entry fees, prizes, refunds and payouts are simulated.';
+  'VONK Tournaments is an independently operated tournament-management platform and is not affiliated with, endorsed by, or sponsored by KRAFTON, BGMI, Garena, or Free Fire. The current frontend demonstration does not process real payments. Wallet balances, entry fees, prizes, refunds and payouts are simulated.';
 
 export const TOURNAMENT_MODES = [
   'Solo',

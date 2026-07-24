@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { Tournament } from '@/types';
 import { ROUTES } from '@/constants';
 import LevelBadge from '../common/LevelBadge';
+import Image from 'next/image';
 import { Calendar, Users, MapPin, Gamepad } from 'lucide-react';
 
 interface TournamentCardProps {
@@ -49,35 +50,43 @@ export const TournamentCard: React.FC<TournamentCardProps> = ({ tournament }) =>
     minute: '2-digit',
   });
 
+  const getBannerSrc = () => {
+    if (tournament.banner && tournament.banner.startsWith('/')) return tournament.banner;
+    if (tournament.game.toLowerCase().includes('free fire')) return '/assets/images/ff-thumb.jpg';
+    if (tournament.game.toLowerCase().includes('bgmi')) return '/assets/images/bgmi-thumb.jpg';
+    return '/assets/images/empty-state.jpg';
+  };
+
+  const getAccentColor = () => {
+    if (tournament.game.toLowerCase().includes('free fire')) return 'bg-secondary text-background glow-secondary';
+    return 'bg-primary text-background glow-primary';
+  };
+
   return (
     <div className="group flex flex-col w-full rounded-2xl bg-card-bg border border-card-border overflow-hidden hover:border-card-hover-border transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-primary/5">
       {/* Banner */}
       <div className="relative w-full h-40 md:h-44 bg-slate-900 overflow-hidden">
         {tournament.featured && (
-          <span className="absolute top-3 left-3 z-10 px-2.5 py-0.5 rounded bg-primary text-background font-black text-[9px] uppercase tracking-widest glow-primary">
+          <span className={`absolute top-3 left-3 z-10 px-2.5 py-0.5 rounded font-black text-[9px] uppercase tracking-widest ${getAccentColor()}`}>
             Featured
           </span>
         )}
 
         <span
-          className={`absolute top-3 right-3 z-10 px-2 py-0.5 rounded border text-[9px] font-black uppercase tracking-wider ${getStatusConfig(
+          className={`absolute top-3 right-3 z-10 px-2 py-0.5 rounded border text-[9px] font-black uppercase tracking-wider backdrop-blur-md ${getStatusConfig(
             tournament.status
           )}`}
         >
           {tournament.status}
         </span>
 
-        {tournament.banner ? (
-          <img
-            src={tournament.banner}
-            alt={tournament.title}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90"
-          />
-        ) : (
-          <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-card-bg to-[#0b0c10] text-muted">
-            <Gamepad className="h-10 w-10 opacity-30" />
-          </div>
-        )}
+        <Image
+          src={getBannerSrc()}
+          alt={tournament.title || ''}
+          fill
+          className="object-cover group-hover:scale-105 transition-transform duration-700 opacity-80 mix-blend-luminosity hover:mix-blend-normal hover:opacity-100"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
 
         {/* Level Badge Overlay */}
         <div className="absolute bottom-3 left-3">

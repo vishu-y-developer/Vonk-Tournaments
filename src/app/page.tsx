@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useTournaments } from '@/providers/TournamentProvider';
 import { ROUTES } from '@/constants';
 import TournamentCard from '@/components/tournaments/TournamentCard';
@@ -84,10 +85,22 @@ export default function Home() {
   return (
     <div className="flex flex-col gap-12 md:gap-20 pb-16">
       {/* 1. HERO SECTION */}
-      <section className="relative overflow-hidden pt-12 md:pt-20 pb-8 flex flex-col items-center text-center px-4">
+      <section className="relative overflow-hidden pt-24 md:pt-32 pb-16 flex flex-col items-center text-center px-4 min-h-[60vh] justify-center">
+        {/* Background Image */}
+        <div className="absolute inset-0 -z-20">
+          <Image
+            src="/assets/images/hero-bg.jpg"
+            alt=""
+            fill
+            priority
+            className="object-cover object-top opacity-50"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/80 to-background" />
+        </div>
+
         {/* Background Glowing Circles */}
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-primary/10 rounded-full blur-3xl -z-10 pointer-events-none" />
-        <div className="absolute top-1/3 left-1/3 w-80 h-80 bg-secondary/10 rounded-full blur-3xl -z-10 pointer-events-none" />
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-primary/20 rounded-full blur-[100px] -z-10 pointer-events-none" />
+        <div className="absolute top-1/3 left-1/3 w-80 h-80 bg-secondary/15 rounded-full blur-[80px] -z-10 pointer-events-none" />
 
         {/* Brand visual header */}
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-card-border bg-card-bg/80 text-xs font-semibold tracking-wide text-foreground/90 mb-6 shadow-inner">
@@ -96,13 +109,13 @@ export default function Home() {
         </div>
 
         {/* Large heading */}
-        <h1 className="text-4xl md:text-6xl font-black tracking-tighter leading-none mb-6">
+        <h1 className="text-4xl md:text-7xl font-black tracking-tighter leading-none mb-6 drop-shadow-xl">
           COMPETE. CONQUER. <br />
           <span className="text-gradient">WIN REWARDS.</span>
         </h1>
 
         {/* Subtitle */}
-        <p className="text-sm md:text-lg text-muted max-w-xl leading-relaxed mb-8">
+        <p className="text-sm md:text-lg text-muted max-w-xl leading-relaxed mb-8 drop-shadow-md">
           Join premium BGMI-style custom-room tournaments, coordinate your squad roster, monitor room release timers, and climb the platform rankings.
         </p>
 

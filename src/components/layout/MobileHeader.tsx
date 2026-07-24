@@ -14,7 +14,7 @@ export const MobileHeader: React.FC = () => {
   const { unreadCount } = useNotifications();
 
   return (
-    <header className="flex md:hidden sticky top-0 z-50 w-full border-b border-card-border bg-background/95 backdrop-blur-md px-4 py-3 items-center justify-between">
+    <header className="flex md:hidden sticky top-0 z-50 w-full border-b-2 border-card-border bg-background-secondary/95 backdrop-blur-md px-4 py-3 items-center justify-between shadow-md">
       <Link href={ROUTES.HOME} className="flex items-center gap-1.5">
         <span className="font-black text-xl tracking-tighter text-gradient">
           VONK

@@ -54,13 +54,13 @@ export const Navbar: React.FC = () => {
   const links = getLinks();
 
   return (
-    <header className="hidden md:flex sticky top-0 z-50 w-full border-b border-card-border bg-background/95 backdrop-blur-md px-6 py-4 items-center justify-between">
+    <header className="hidden md:flex sticky top-0 z-50 w-full border-b border-card-border bg-background-secondary/95 backdrop-blur-md px-6 py-4 items-center justify-between shadow-md">
       {/* Brand logo */}
       <Link href={ROUTES.HOME} className="flex items-center gap-2">
         <span className="font-extrabold text-2xl tracking-tighter text-gradient">
           VONK
         </span>
-        <span className="text-xs uppercase tracking-widest text-muted border-l border-card-border pl-2 font-bold hidden lg:inline">
+        <span className="text-[10px] uppercase tracking-widest text-muted border-l-2 border-card-border pl-2 font-black hidden lg:inline">
           Tournaments
         </span>
       </Link>
@@ -73,10 +73,10 @@ export const Navbar: React.FC = () => {
             <Link
               key={link.path}
               href={link.path}
-              className={`text-sm font-semibold tracking-wide transition-all ${
+              className={`text-sm font-bold tracking-wide transition-all uppercase ${
                 isActive
-                  ? 'text-primary'
-                  : 'text-foreground/80 hover:text-primary'
+                  ? 'text-primary drop-shadow-[0_0_8px_rgba(34,197,94,0.4)]'
+                  : 'text-foreground/70 hover:text-foreground'
               }`}
             >
               {link.label}
